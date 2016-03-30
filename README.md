@@ -11,15 +11,13 @@ in react-native using [React Native SideMenu](https://github.com/react-native-fe
 
 # Installation
 You can either link this as dependency with
-`npm install react-native-thesidebar --save``
+`npm install react-native-thesidebar --save`
+
+
 or copy sidemenu.js in your project
 
 # Example of usage
-
 Check [examples/](https://github.com/dzannotti/react-thesidebar/tree/master/example)
-
-# Supported styles
-For now just vanilla and AirBnb style is supported
 
 # Licence
 The MIT License (MIT)
