@@ -1,55 +1,64 @@
-var React = require('react-native');
-var StyleSheet = React.StyleSheet;
-var merge = require('merge');
-var ReactIOSViewAttributes = require('ReactIOSViewAttributes');
-var createReactIOSNativeComponentClass = require('createReactIOSNativeComponentClass');
+import React from 'react-native'
+import SideMenu from 'react-native-side-menu'
 
-var styles = StyleSheet.create({
-    container: {
-        position: "absolute",
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0
+const { Component, Dimensions, PropTypes } = React
+
+const deviceScreen = Dimensions.get('window')
+
+class FacebookStyle extends Component {
+  render() {
+    return (
+      <SideMenu {...this.props}>
+        {this.props.children}
+      </SideMenu>
+    )
+  }
+}
+
+class AirBnbStyle extends Component {
+  static propTypes = {
+    openMenuOffset: PropTypes.number
+  }
+  static defaultProps = {
+    openMenuOffset: deviceScreen.width * 2 / 3
+  }
+  constructor(props) {
+    super(props)
+    this.animationStyle = this.animationStyle.bind(this)
+  }
+
+  animationStyle(value) {
+    const { openMenuOffset } = this.props
+    return {
+      transform: [{
+        translateX: value.interpolate({
+          inputRange: [0, openMenuOffset],
+          outputRange: [0, openMenuOffset - 70]
+        })
+      }, {
+        scaleX: value.interpolate({
+          inputRange: [0, openMenuOffset],
+          outputRange: [1, 0.7]
+        })
+      }, {
+        scaleY: value.interpolate({
+          inputRange: [0, openMenuOffset],
+          outputRange: [1, 0.7]
+        })
+      }]
     }
-});
+  }
 
-var SidebarLeftView = createReactIOSNativeComponentClass({
-    validAttributes: ReactIOSViewAttributes.UIView,
-    uiViewClassName: 'SidebarLeftView',
-});
+  render() {
+    return (
+      <SideMenu {...this.props} animationStyle={this.animationStyle}>
+        {this.props.children}
+      </SideMenu>
+    )
+  }
+}
 
-var SidebarContentView = createReactIOSNativeComponentClass({
-    validAttributes: ReactIOSViewAttributes.UIView,
-    uiViewClassName: 'SidebarContentView',
-});
-
-var SidebarMainView = createReactIOSNativeComponentClass({
-    validAttributes: merge(ReactIOSViewAttributes.UIView, {
-        open: true,
-        transitionStyle: true
-    }),
-    uiViewClassName: 'SidebarMainView',
-
-});
-
-var SideMenu = React.createClass({
-    render: function() {
-        var transitionStyle = "facebook";
-        if(this.props.transitionStyle !== undefined) {
-            transitionStyle = this.props.transitionStyle;
-        }
-        return (
-            <SidebarMainView open={this.props.open} transitionStyle={transitionStyle} style={styles.container}>
-                <SidebarLeftView style={styles.container}>
-                    {this.props.menu}
-                </SidebarLeftView>
-                <SidebarContentView style={styles.container}>
-                    {this.props.content}
-                </SidebarContentView>
-            </SidebarMainView>
-        );
-    }
-});
-
-module.exports = SideMenu;
+export default {
+  FacebookStyle,
+  AirBnbStyle
+}

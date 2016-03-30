@@ -1,15 +1,20 @@
 {
-  "name": "react-thesidebar",
+  "name": "react-native-thesidebar",
   "version": "0.0.1",
-  "keywords": [
-    "react-component",
-    "react-native",
-    "ios"
-  ],
-  "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
-  },
+  "main": "sidemenu.js",
   "dependencies": {
-    "react-native": "^0.3.1"
-  }
+    "react": "^0.14.8",
+    "react-native": "^0.22.2",
+    "react-native-side-menu": "^0.18.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dzannotti/react-native-thesidebar.git"
+  },
+  "author": "Daniele Zannotti <d.zannotti@me.com> (https://github.com/dzannotti)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dzannotti/react-native-thesidebar/issues"
+  },
+  "homepage": "https://github.com/dzannotti/react-native-thesidebar"
 }

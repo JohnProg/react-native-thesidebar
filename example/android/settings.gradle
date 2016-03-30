@@ -1,0 +1,3 @@
+rootProject.name = 'thesidebar'
+
+include ':app'
