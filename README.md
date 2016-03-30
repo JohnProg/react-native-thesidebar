@@ -3,6 +3,10 @@ Implementation of the magnificient [TheSidebarcontroller](https://github.com/jon
 in react-native using [React Native SideMenu](https://github.com/react-native-fellowship/react-native-side-menu/)
 
 # What does it looks like?
+## Airbnb Style
+<img src="https://raw.githubusercontent.com/dzannotti/react-native-thesidebar/master/example/airbnb-style.gif">
+## Facebook Style
+<img src="https://raw.githubusercontent.com/dzannotti/react-native-thesidebar/master/example/facebook-style.gif">
 
 
 # Installation
